@@ -7,7 +7,7 @@ export default function PagenotFound(){
     <div className="container">
         <div className="row"></div>
         <div className="row"></div> 
-        <div className="row">
+        <div className="row justify-content-center">
                  <div className="page">
                     <h3>PAGE NOT FOUND</h3>
                     <h5>Click Below</h5>
