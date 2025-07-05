@@ -9,7 +9,6 @@ const bcrypt = require("bcryptjs");
 
 
 const app = express();
-app.use(cors());
 app.use(express.json());
 require("dotenv").config();
 
@@ -19,7 +18,7 @@ mongoose.connect(process.env.MONGO_URL)
   .catch((err) => console.error("MongoDB error:", err));
 
 app.use(cors({
-  origin: 'https://todo-frontend-black-three.vercel.app',
+  origin: process.env.FRONT_URL,
   methods: ['GET', 'POST', 'PATCH', 'DELETE'],
   credentials: true
 }));
