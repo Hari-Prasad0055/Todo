@@ -21,9 +21,8 @@ mongoose.connect(process.env.MONGO_URL)
 app.use(express.json());
 
 const allowedOrigins = [
-  "https://todo-frontend-black-three.vercel.app",
-  "https://todo-397f.vercel.app",
-  "http://localhost:3000"
+  process.env.FRONT_URL,
+  "http://localhost:8080"
 ];
 
 app.use(cors({
@@ -31,12 +30,13 @@ app.use(cors({
     if (!origin || allowedOrigins.includes(origin)) {
       callback(null, true);
     } else {
-      callback(new Error("Not allowed by CORS"));
+      callback(new Error("CORS not allowed from: " + origin));
     }
   },
   credentials: true,
   methods: ['GET', 'POST', 'PATCH', 'DELETE']
 }));
+
 
 
 
