@@ -18,6 +18,15 @@ mongoose.connect(process.env.MONGO_URL)
   .then(() => console.log("MongoDB connected"))
   .catch((err) => console.error("MongoDB error:", err));
 
+app.use(cors({
+  origin: 'https://todo-frontend-black-three.vercel.app',
+  methods: ['GET', 'POST', 'PATCH', 'DELETE'],
+  credentials: true
+}));
+
+app.use(express.json());
+
+
 app.post("/signup", async (req, res) => {
   try {
     const { username, email, password } = req.body;
