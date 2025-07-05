@@ -10,14 +10,6 @@ export default function Loginpage() {
   const navigate = useNavigate();
   const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
-  // useEffect(() => {
-  //   const token = localStorage.getItem("token");
-  //   if (token) {
-  //     alert("You are loggedin")
-  //     navigate("/todo");
-  //   }
-  // }, []);
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!username || !password) {
@@ -45,7 +37,8 @@ export default function Loginpage() {
       <div className="row p-5 text-center">
         <h3><b>Log In to make your Todos</b></h3>
       </div>
-      <div className="row p-5" style={{ width: "45%", marginLeft: "360px" }}>
+      <div className="row justify-content-center " >
+        <div className="responsive-login" style={{ width: "45%", margin:"auto"  }}>
         <form onSubmit={handleSubmit} className="needs-validation">
           <div className="mb-3">
             <label className="form-label">Username</label>
@@ -54,7 +47,7 @@ export default function Loginpage() {
               className="form-control"
               placeholder="username"
               value={username}
-              onChange={(e) => setLog({ ...log, username: e.target.value })} // ✅ fix
+              onChange={(e) => setLog({ ...log, username: e.target.value })} 
               required
             />
           </div>
@@ -65,7 +58,7 @@ export default function Loginpage() {
               className="form-control"
               placeholder="Password"
               value={password}
-              onChange={(e) => setLog({ ...log, password: e.target.value })} // ✅ fix
+              onChange={(e) => setLog({ ...log, password: e.target.value })} 
               required
             />
           </div>
@@ -73,6 +66,7 @@ export default function Loginpage() {
             Log In
           </button>
         </form>
+          </div>
       </div>
     </div>
   );
