@@ -17,13 +17,27 @@ mongoose.connect(process.env.MONGO_URL)
   .then(() => console.log("MongoDB connected"))
   .catch((err) => console.error("MongoDB error:", err));
 
-app.use(cors({
-  origin: process.env.FRONT_URL,
-  methods: ['GET', 'POST', 'PATCH', 'DELETE'],
-  credentials: true
-}));
 
 app.use(express.json());
+
+const allowedOrigins = [
+  "https://todo-frontend-black-three.vercel.app",
+  "https://todo-397f.vercel.app",
+  "http://localhost:3000"
+];
+
+app.use(cors({
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
+  credentials: true,
+  methods: ['GET', 'POST', 'PATCH', 'DELETE']
+}));
+
 
 
 app.post("/signup", async (req, res) => {
