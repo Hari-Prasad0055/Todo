@@ -111,6 +111,7 @@ export default function Todo() {
       <h5>Email :{user.email}</h5>
       <button onClick={logoutUser} className="btn submit-button px-4 py-2 mt-2" >LogOut</button>
       </div>
+      <div className="todototal">
      <h4 className="title"><b>MAKE YOUR TODOs</b></h4>
       <div className="top">
         <input
@@ -136,6 +137,7 @@ export default function Todo() {
             </li>
           ))}
         </ul>
+        </div>
       </div>
     </div>
   );
